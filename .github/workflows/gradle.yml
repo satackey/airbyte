@@ -34,6 +34,15 @@ jobs:
           restore-keys: |
             ${{ secrets.CACHE_VERSION }}-pip-${{ runner.os }}-
 
+      - name: cache-docker-layers
+        uses: satackey/action-docker-layer-caching@v0.0.8
+        # Ignore the failure of a step and avoid terminating the job.
+        continue-on-error: true
+        with:
+          key: airbyte-docker-cache-{hash}
+          restore-keys: |
+            airbyte-docker-cache-
+
       - name: Npm Caching
         uses: actions/cache@v2
         with:
