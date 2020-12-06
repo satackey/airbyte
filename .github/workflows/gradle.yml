@@ -35,7 +35,7 @@ jobs:
             ${{ secrets.CACHE_VERSION }}-pip-${{ runner.os }}-
 
       - name: cache-docker-layers
-        uses: satackey/action-docker-layer-caching@v0.0.8
+        uses: satackey/action-docker-layer-caching@output-error-with-details-release
         # Ignore the failure of a step and avoid terminating the job.
         continue-on-error: true
         with:
